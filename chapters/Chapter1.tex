@@ -1,0 +1,117 @@
+% ------------------------------------------------------------------------------
+% Chapter 1
+% ------------------------------------------------------------------------------
+\chapter{Introduction to Probability}
+\label{chapter1}
+
+\begin{displayquote}
+	\textit{Probability is the branch of mathematics that studies the possible outcomes of given events together with the outcomes' relative likelihoods and distributions. [...] The analysis of events governed by probability is called statistics.} - Wolfram
+\end{displayquote}
+
+Before the 16th century, predicting the outcome of a future event
+with any degree of accuracy was thought to be impossible. Measuring
+the likelihood of something occurring was the first approach to probability.
+In 1620 Galileo published \textit{Sopra le Scoperte dei Dadi} (On the Outcomes of Dice),
+calculating the chances of certain totals when throwing dice. \newline \par
+
+Deducing the probability of outcomes is the study of \textbf{probability theory}.
+When we do not know the probablistic mechanism governing the process, and we must estimate
+parameters from data, this is \textbf{statistics}. \newline \par
+
+{\Large Example:}\par
+\begin{adjustwidth}{2cm}{}
+	\textbf{Probability:} Previous studies showed that the drug was 80\% effective.
+	Then we can anticipate that for a study on 100 patients, in average 80 will be cured
+	and at least 65 will be cured with 99.99\% chances.\newline
+	\textbf{Statistics:} Observe that 78/100 patients were cured. We (will be able to)
+	conclude that we are 95\% confident that for other studies the drug will be effective
+	on between 69.88\% and 86.11\% of patients.\newline \newline
+
+	Notice how in the probability case, we are given the likelihoods of something happening.
+	While in the case of statistics we take a population sample and use this to infer something
+	about our data.
+\end{adjustwidth}
+
+\section{Definition of Probability}
+
+If $n$ is the number of trials of an experiment (such as the number of flips of a coin), one might
+define the probability of an event E (such as the outcome we get a heads) by
+\begin{equation}
+	P(E) = \lim_{n\to \infty}\frac {\textrm{Number of times E occurs}}{n}
+\end{equation}
+However this is not an acceptable mathematical definition of probability.
+
+Even though probability distributions existed, a formal definition for probability lacked until 1933, when Andrey N. Kolmogorov set three axioms of probability
+in \textit{Foundations of the Calculus of Probabilities}. Which was defined as the following: \newline
+
+Suppose that a random experiment has associated with it a sample space $S$. A probability is a numerically valued
+function that assigns a number $P(A)$ to every event $A$ so that the following axioms hold:
+\begin{enumerate}
+	\item $P(A)\geq 0$
+	\item $P(S) = 1$
+	\item if $A_1, A_2, ...$ is a sequence of mutually exclusive events (that is, a sequence in which $A_{i}A_{j}=\phi$ for
+		any $i\neq j$), then
+		\begin{equation}
+			P\left ( \bigcup_{i=1}^{\infty} A_i\right )=\sum_{i=1}^{\infty}P(A_i)
+		\end{equation}
+\end{enumerate}\par
+
+The first axiom states that a probability of any event occuring must be greater or equal to 0 (i.e. non-negative).
+By the second axiom we also have that the probability of any event occuring cannot be greater than 1, in fact, the probability
+that at least some event will occur in the sample space $S$ is 1. And finally the third axiom states that for mutually exclusive
+events $A$ and $B$ then the probability that both occur is $P(A\cup B) = P(A)+P(B)$.
+
+\section{Conditional Probability}
+
+Sometimes partial information about an event can help us when calculating probabilities. For instance, if a family has two children
+but we are told at least one is a girl, what is the probability that the family has two girls? Using event $A$ to denote the event
+we have two girls and event $B$ to denote that at least one is a girl. We have the following:
+
+\begin{equation}
+\begin{split}
+	P(\textrm{two girls given we have at least one girl}) & = \\
+	& = P(A \textrm{given} B) \\
+	& = P(A\; | \; B)
+\end{split}
+\end{equation}
+
+The definition for conditional probability is: If $A$ and $B$ are any two events, then the conditional probabiliy of
+$A$ given $B$ denoted by $P(A|B)$ is
+
+\begin{equation}
+	P(A\; | \; B) = \frac{P(A \cap B)}{P(B)}
+\end{equation}
+
+Note that $|$ is used to denote the word "given". And $\cap$ is the set intersection, where both events $A$ and $B$ occur.\newline \par
+
+Therefore in our example of two girls given we have at least one girl in a family with two children, the probability is $1/3$.
+It may help to visualise the set of possible outcomes $S$.
+
+\begin{equation}
+	S = \left \{BB, \color{blue}BG, GB, \color{red}GG\right \}
+\end{equation}
+
+Then we can clearly see that, $P(A\; |\; B) = \frac{\color{red}1/4}{\color{blue}3/4}=\frac{1}{3}$
+
+\subsection{Independence}
+
+If an event occuring does not change the probability of another event, then such events are said to be independent.
+Two events $A$ and $B$ are said to be independent if
+
+\begin{equation*}
+	P(A\cap B) = P(A)P(B)
+\end{equation*}
+
+which is the equivalent of saying
+\begin{align*}
+	P(A\; |\; B)&=P(A) \\
+	P(B\; |\; A)&=P(B)
+\end{align*}
+
+\subsection{Bayes' Rule}
+
+Given our formula for conditional probability defined above, we can rearrange for $P(A\cap B)$ and use substitution as follows:
+
+\begin{equation*}
+	P(A\; |\; B)=\frac {P(A\cap B)}{P(B)}=\frac {P(B\; |\; A)P(A)}{P(B)}
+\end{equation*}
