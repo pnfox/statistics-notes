@@ -1,0 +1,38 @@
+% ------------------------------------------------------------------------------
+% Chapter 2
+% ------------------------------------------------------------------------------
+\chapter{Discrete Probability Distributions}
+\label{chapter2}
+
+\par
+In mathematics a variable is a symbol which represents a quantity, number, function, graph, or any mathematical object.
+In computer science a variable is also a placeholder for quantities or (in higher level languages) objects. When a variables' values
+are bound by randomness, we call these random variables. The random variable $X$ might represent the outcome of flipping a coin, while
+the random variable $Y$ may be the price of milk next year.\newline \par
+
+More formally, a \textbf{random variable} is a real-valued function whose domain is a sample space.\newline \par
+
+In the case of our example variable $X$ the sample space is either heads or tails. For our variable $Y$ the sample space is any real number
+(i.e. any number between $-\infty$ and $\infty$). When the sample space only constitues a finite set of values, we say that the random variable
+is discrete. Otherwise it is called a continious random variable, even if the price of milk can only be between $0$ and $10$, the fact it lies randomly on
+a continious interval means it is a continious random variable. To be more specific: \newline \par
+
+A random variable $X$ is said to be \textbf{discrete} if it can take on only a finite number - or a countably infinite number - of possible values of x
+The probability function of $X$, denoted $p(x)$, assigns probability to each value of x of $X$ so that the following conditions are satisfied.
+
+\begin{enumerate}
+	\item $P(X=x) = p(x) \geq 0$
+	\item $\sum_{x}P(X=x)=1$ where the sum is over all possible values of x
+\end{enumerate}\par
+
+It is often useful in some cases to study random variables by looking at cumulative probabilities; that is, we
+look at the probability a random variable $X$ takes a value less than or equal to some value $x$, i.e. $P(X\leq x)$.
+This is described by the \textbf{cumulative distribution function}, denoted by $F(x)$.\newline \par
+
+Hence the cumulative distribution function $F(x)$ for a randon variable $X$ is
+\begin{align*}
+	F(b)&=P(X\leq x) \\
+	\textrm{if }&X\textrm{ is discrete then,} \\
+	F(b)&=\sum_{x=-\infty}^{b}p(x)\\
+\end{align*}
+where $p(x)$ is the probability function.
