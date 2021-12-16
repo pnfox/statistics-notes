@@ -33,6 +33,43 @@ Hence the cumulative distribution function $F(x)$ for a randon variable $X$ is
 \begin{align*}
 	F(b)&=P(X\leq x) \\
 	\textrm{if }&X\textrm{ is discrete then,} \\
-	F(b)&=\sum_{x=-\infty}^{b}p(x)\\
+	F(b)&=\sum_{x=-\infty}^{b}p(x)
 \end{align*}
-where $p(x)$ is the probability function.
+where $p(x)$ is the probability function.\newline \par
+
+Even though the value of $X$ can be anything from a finite set of values, the cumulative distribution function
+is actually a discontinuous step function. This is because $F(b)$ is defined for
+all real numbers but will only increase where $X$ has probabilities associated with specific values.\newline
+
+\section{Expected Values and Variation}
+
+Even if we have a full picture of how likely different outcomes may be, it can still be difficult to see
+what the usual expected value, as this may not always be the most likely outcome. In probability, the average
+value of a large number of independent realizations of $X$ is called the \textbf{expected value}, often denoted
+with $E(X)$ or $E[X]$. We define this formally as,
+
+\begin{equation*}
+	E(X) = \sum_{x}xp(x)
+\end{equation*}
+
+As you can see, the expected value is the sum of values $X$ can take, $x$, each multiplied by the probability associated with that value, $p(x)$.
+The expected value therefore is a weighted average, as values with associated higher probabilities are more likely
+to shift $E(X)$ towards the value of $x$ (when $p(x)$ is close to $1$).\newline \par
+
+If the values $X$ can take are governed by a real-valued function $g(x)$ then the expected value is as follows,
+
+\begin{equation*}
+	E(g(X)) = \sum_{x}g(x)p(x)
+\end{equation*}
+
+In order numerically represent how spread out values are around the expected value, i.e. the variation in our data, we calculate \textbf{variance},
+which is given by (where $\mu = E(X)$)
+
+\begin{align*}
+	V(X)&=E[(X-\mu)^2]\\
+	& \textrm{which for a discrete random variable is} \\
+	&=\sum_{x}(x-\mu)^{2}p(x)
+\end{align*}
+
+Variance is sometimes expressed with the notation $\sigma ^2$.
+
