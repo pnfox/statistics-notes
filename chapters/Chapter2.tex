@@ -71,5 +71,89 @@ which is given by (where $\mu = E(X)$)
 	&=\sum_{x}(x-\mu)^{2}p(x)
 \end{align*}
 
-Variance is sometimes expressed with the notation $\sigma ^2$.
+Variance is sometimes expressed with the notation $\sigma ^2$, because the variance is equal to the \textbf{standard deviation} squared. The standard deviation
+is a measure of variation that maintains the original units of measure, as opposed to the variance which is in squared units.\newline \par
 
+\textbf{Example:} Assume we have the following data:
+
+\begin{center}
+\begin{tabular}{|c c c|} 
+ \hline
+ Age Interval & Age Midpoint & \% population \\ [0.5ex] 
+ \hline\hline
+ $<$ 5 & 3 & 6.9 \\ 
+ \hline
+ 5-9 & 8 & 7.3 \\
+ \hline
+ 10-19 & 15 & 14.4 \\
+ \hline
+ 20-29 & 25 & 13.3 \\
+ \hline
+ 30-39 & 35 & 15.5 \\
+ \hline
+ 40-49 & 45 & 15.3 \\
+ \hline
+ 50-59 & 55 & 10.8 \\
+ \hline
+ $>$ 60 & 80 & 16.5 \\ [1ex]
+ \hline
+\end{tabular}
+\end{center}
+
+Even though we are given the age as a continuous interval, we calculate the midpoint of these to give us
+a discrete variable of age. Interpreting the percentages as probabilities, we calculate the mean age as follows.
+
+\begin{align*}
+	\mu = E(X) & = \sum_{x}xp(x) \\
+	& = 3\cdot 0.069 + 8\cdot 0.073 + 15\cdot 0.144 + ... + 80\cdot 0.165 \\
+	& = 37.7
+\end{align*}
+
+We can calculate how spread the values are around the mean, with the variance.
+
+\begin{align*}
+	\sigma ^2 & = \sum_{x}(x-\mu)^{2}p(x) \\
+	& = \sqrt{(3-37.7)^2(0.069) + (8-37.7)^2(0.073) + ... + (80-37.7)^2(0.165)}
+	& = 579.9
+\end{align*}
+
+As you can see a variance of 579.9 is a hard number to interpret in terms of age squared. This is why it is often more useful
+to calculate the standard deviation as it is in the original units (age). Which is $\sigma = \sqrt{579.9} = 24.08$. In summary, we can
+see that the expected value (or mean) age of the population is $37.7$ years old, while on average a person deviates by $\pm 24.08$ years around this mean.
+
+\section{Chebyshev's inequality}
+The mean and variance give us an idea for the center and spread of a distribution. We can infact calculate intervals about the mean. Chebyshev's inequality
+provides us a way to do that without needing to know the type of distribution (normal, bernoulli, exponential,...) a variable takes, which is incredibly useful
+as many statistical techniques often require a variable be of a certain distribution type in order to work. Chebyshev's inequality however can be applied to
+any probability distribution.\newline
+
+Let $X$ be a random variable with mean $\mu$ and variance $\sigma ^2$. Then for any positive $k$,
+
+\begin{equation*}
+	P(\left \| X - \mu\right \| < k\sigma) \geq 1 - \frac{1}{k^2}
+\end{equation*}
+
+Which is equivalent to saying,
+
+\begin{equation*}
+	P(\mu - k\sigma < X < \mu + k\sigma) \geq 1 - \frac{1}{k^2}
+\end{equation*}
+
+Let's calculate the 90\%confidence interval from our previous example. We set $(1-1/k^2)$ equal to 0.9 and solve for $k$.
+
+\begin{align*}
+	1-\frac{1}{k^2} & = 0.9 \\
+	\frac{1}{k^2} & = 0.1 \\ 
+	k^2 & = 10 \\
+	k & = \sqrt{10} = 3.16
+\end{align*}
+
+Then the confidence interval is
+
+\begin{align*}
+	(\mu - 3.16\cdot \sigma,\; \mu + 3.16\cdot \sigma) & = (37.7 - 3.16\cdot 24.08,\; 37.7 + 3.16\cdot 24.08) \\
+	& = (-10.46, 85.86)
+\end{align*}
+
+Of course negative ages don't make sense but 90\% of our the population has an age within this interval.
+It cannot be assumed that half the values are on the left of this interval and the other half are on the right side of the interval.
