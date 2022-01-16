@@ -18,7 +18,7 @@ is discrete. Otherwise it is called a continious random variable, even if the pr
 a continious interval means it is a continious random variable. To be more specific: \newline \par
 
 A random variable $X$ is said to be \textbf{discrete} if it can take on only a finite number - or a countably infinite number - of possible values of x
-The probability function of $X$, denoted $p(x)$, assigns probability to each value of x of $X$ so that the following conditions are satisfied.
+The \textbf{probability density function} (PDF) of $X$, denoted $p(x)$, assigns probability to each value of x of $X$ so that the following conditions are satisfied.
 
 \begin{enumerate}
 	\item $P(X=x) = p(x) \geq 0$
@@ -130,7 +130,7 @@ any probability distribution.\newline
 Let $X$ be a random variable with mean $\mu$ and variance $\sigma ^2$. Then for any positive $k$,
 
 \begin{equation*}
-	P(\left \| X - \mu\right \| < k\sigma) \geq 1 - \frac{1}{k^2}
+	P(| X - \mu | < k\sigma) \geq 1 - \frac{1}{k^2}
 \end{equation*}
 
 Which is equivalent to saying,
@@ -139,21 +139,57 @@ Which is equivalent to saying,
 	P(\mu - k\sigma < X < \mu + k\sigma) \geq 1 - \frac{1}{k^2}
 \end{equation*}
 
-Let's calculate the 90\%confidence interval from our previous example. We set $(1-1/k^2)$ equal to 0.9 and solve for $k$.
+\textbf{Example:} Suppose a performance test gives an average throughput result of 2.4 Mb/s (Megabits per second) and a standard deviation of 0.6 Mb/s.
+Calculate the 90\% confidence interval of throughput.\newline
+First we set $1-1/k^2$ equal to 0.9 and solve for $k$.
 
 \begin{align*}
-	1-\frac{1}{k^2} & = 0.9 \\
-	\frac{1}{k^2} & = 0.1 \\ 
+	1 - \frac{1}{k^2} & = 0.9 \\
+	\frac{1}{k^2} & = 0.1 \\
 	k^2 & = 10 \\
 	k & = \sqrt{10} = 3.16
 \end{align*}
 
-Then the confidence interval is
-
+The shortest Chebyshev interval is then,
 \begin{align*}
-	(\mu - 3.16\cdot \sigma,\; \mu + 3.16\cdot \sigma) & = (37.7 - 3.16\cdot 24.08,\; 37.7 + 3.16\cdot 24.08) \\
-	& = (-10.46, 85.86)
+	(\mu - 3.16\cdot \sigma, & \; \mu + 3.16\cdot \sigma) \\
+	(2.4 - 3.16\cdot 0.6, & \; 2.4 + 3.16\cdot 0.6) \\
+	(0.5, & \; 4.3) \\
 \end{align*}
 
-Of course negative ages don't make sense but 90\% of our the population has an age within this interval.
-It cannot be assumed that half the values are on the left of this interval and the other half are on the right side of the interval.
+As you can see Chebyshev's interval provides a very wide bound, other inequalities have been developed that provide sharper intervals, however it often helps
+to know more about the distribution type.
+
+\section{Bernoulli Distribution}
+The Bernoulli Distribution is a discrete distribution in which the outcome of a random variable is binary, that is
+
+\begin{equation*}
+    X = \left\{\begin{matrix}
+	    1, \textrm{outcome is success}\\ 0, \textrm{outcome is failure}
+    \end{matrix}\right.
+\end{equation*}
+
+Suppose the probability of success, $X=1$ is $p$ and the probability of failure is $1-p$. The probability distribution (PDF) of a Bernoulli distribution is,
+
+\begin{equation*}
+	p(x) = \left\{\begin{matrix}
+		p \; \; \textrm{for} \; X = 1 \\ 1-p \; \; \textrm{for} \; X = 0
+	\end{matrix}\right.
+\end{equation*}
+
+If we repeatedly ran an experiment and recorded the outcomes of our Bernoulli variable, what would the expected value be?
+
+\begin{align*}
+	E(X) & = \sum_{x}xp(x)\\
+	& = 0\cdot p(0) + 1\cdot p(1) \\
+	& = 0\cdot (1-p) + 1\cdot p = p
+\end{align*}
+
+The expected value we would see is $p$. Calculating for variance we get $V(X)=p(1-p)$ for a Bernoulli distribution.\newline \par
+
+\textbf{Example:} The distibution of heads and tails in coin tossing represents a Bernoulli distribution with $p=1/2$.
+
+
+\section{Binomial Distribution}
+If we perform $n$ independent Bernoulli experiments, each with probability $p$ of success, and instead of $X$ being the outcome of each experiment, we let $X$ be the
+number of successes in $n$ Bernoulli experiments, then $X$ follows a Binomial distribution.
