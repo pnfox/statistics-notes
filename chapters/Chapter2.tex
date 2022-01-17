@@ -192,4 +192,30 @@ The expected value we would see is $p$. Calculating for variance we get $V(X)=p(
 
 \section{Binomial Distribution}
 If we perform $n$ independent Bernoulli experiments, each with probability $p$ of success, and instead of $X$ being the outcome of each experiment, we let $X$ be the
-number of successes in $n$ Bernoulli experiments, then $X$ follows a Binomial distribution.
+number of successes in $n$ Bernoulli experiments, then $X$ follows a Binomial distribution.\newline \par
+
+We run $n$ independent Bernoulli experiments and record values for $Y_1, Y_2, ..., Y_n$, where $Y_i$ is the outcome (either $1$ on success or $0$ on failure)
+of the ith Bernoulli experiment. Then our random variable with a Binomial Distribution is defined as,
+
+\begin{equation*}
+	X = \sum_{i=1}^{n}Y_{i}
+\end{equation*}
+
+If $X$ is the number of successes from $n$ Bernoulli trials, then what is the probability we have $k$ successes (i.e. What is $P(X=k)$)? This
+is defined by the probability density function.
+
+\begin{equation*}
+	P(X=k) = \binom{n}{k}p^{x}(1-p)^{n-x}
+\end{equation*}
+
+The expected value and variance can also be calculated knowing the expected value and variance of each $Y_i$ is Bernoulli.
+
+\begin{align*}
+	E(X) & = E\left [ \sum_{i=1}^{n}Y_{i} \right ] \\
+	& = \sum_{i=1}^{n}E(Y_{i}) \\
+	& = \sum_{i=1}^{n}p = np
+\end{align*}
+
+\begin{equation*}
+	V(X) = \sum_{i=1}^{n} V(Y_{i}) = \sum_{i=1}^{n}p(1-p) = np(1-p)
+\end{equation*}
